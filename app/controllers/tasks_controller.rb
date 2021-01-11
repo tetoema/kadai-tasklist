@@ -11,8 +11,7 @@ class TasksController < ApplicationController
   end
 
   def show
-      @user = User.find(params[:id])
-      @tasks = @user.tasks.order(id: :desc).page(params[:page])
+      @tasks = current_user.tasks.order(id: :desc).page(params[:page])
   end
 
   def new
@@ -32,7 +31,6 @@ class TasksController < ApplicationController
   end
 
   def edit
-      @task = Task.find_by(id: params[:id])
   end
 
   def update

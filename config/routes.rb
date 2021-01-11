@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
+  post 'login', to: 'sessions#edit'
   delete 'logout', to: 'sessions#destroy'
   
   get 'signup', to: 'users#new'
-  resources :users, only: [:index, :show, :new, :create]
+  resources :users, only: [:index, :show, :edit, :new, :create]
   
-  resources :tasks, only: [:create, :destroy, :edit, :new]  
+  resources :tasks  
 end
